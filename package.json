@@ -1,0 +1,48 @@
+{
+  "name": "sign-canvas-plus",
+  "version": "2.0.0",
+  "author": "yxs",
+  "private": false,
+  "description": "一个基于canvas和vue3的手写签名板,支持移动端和PC可以直接下载图片和转成base64编码，支持高倍屏高清绘制,(sign-canvas)的vue3版本,可以在vue3中使用了。",
+  "main": "lib/sign-canvas-plus.umd.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.12.5",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "typescript": "~5.4.0",
+    "vite": "^5.2.8",
+    "vite-plugin-dts": "^3.9.0",
+    "vite-plugin-vue-devtools": "^7.0.25",
+    "vue-tsc": "^2.0.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:langyuxiansheng/vue-sign-canvas.git"
+  },
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "types",
+    "packages"
+  ]
+}
