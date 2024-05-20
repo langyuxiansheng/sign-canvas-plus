@@ -269,24 +269,28 @@ props:{
     writeColor: '#101010', // 轨迹颜色  [String] 可选
     isSign: true, //签名模式 [Boolean] 默认为非签名模式,有线框, 当设置为true的时候没有任何线框
     imgType: 'png', //下载的图片格式  [String] 可选为 jpeg  canvas本是透明背景的.
-    quality: 1 //  图片压缩系数[0-1]之间 可以选 默认为1
+    quality: 1, //  图片压缩系数[0-1]之间 可以选 默认为1
+    enableResize: true, //是否启用窗口变化监听 [Boolean] 可选, 此操作在pc端用于监听窗口变化,动态调整画板大小 调整大小的时候会清空画板内容, 移动端使用的时候建议设置为false
 }
 ```
 
 2. 内置方法
 
 ```javascript
+import { ref } from 'vue'
+const SignCanvasRef = ref()
+
 //清除画布 无返回值 [Void]
-this.$refs.SignCanvas.canvasClear()
+SignCanvasRef.value?.canvasClear()
 
 //获取base图片 返回图片的base64编码 [String]
-this.$refs.SignCanvas.saveAsImg()
+SignCanvasRef.value?.saveAsImg()
 
 //下载图片到本地, 调用内置的下载图片方法,默认将图片保存为png格式(经测试在部分微信内置浏览器中无效)
-this.$refs.SignCanvas.downloadSignImg()
+SignCanvasRef.value?.downloadSignImg()
 
 // 获取压缩图片,此方法返回压缩后的base64图片
-this.$refs.SignCanvas.dealImage()
+SignCanvasRef.value?.dealImage()
 ```
 
 ## [在线演示](https://langyuxiansheng.github.io/sign-canvas-plus/)
@@ -363,37 +367,11 @@ npm run lint
 
 ## 更新日志
 
+> v2.0.3 修复bug,功能属性更新.增加enableResize 属性，可以通过 options.enableResize 来控制窗口变化的时候,是否自动调整画板大小,自动调整大小的时候会清空画板内容, 移动端使用的时候建议设置为false
+
+> v2.0.1 修复bug
+
 > v2.0.0 使用了vue3 + vite进行重写了,支持类型提示和vue3的setup直接使用了.增加了压缩图导出.修复bug等
-
-> v1.1.4 功能更新：增加全屏手写方案，可以通过 options.isFullScreen,和 options.isFullCover 属性控制,全屏模式下 canvasWidth 和 canvasHeight 属性设置无效,感谢网友 AFelicity”的建议与反馈。
-
-> v1.1.3 功能更新：增加高倍屏下，绘制会模糊的适配方案，可以通过 options.isDpr 属性进行开启或者关闭，感谢网友“Wong-Harry”的建议与反馈。
-
-> v1.1.2 优化部分逻辑代码.
-
-> v1.1.1 修复 background 拼写错误,感谢网友"shady-xia"的反馈和建议.
-
-> v1.1.0 本次更新调整较大,内容如下:
-
-- 调整局部组件注册的逻辑,全局使用的不收影响,如果有局部注册的朋友请调整一下.
-- 调整 demo 样式,增加动态配置项,属性支持动态响应了;
-- 修复滚动距离导致画点偏移的 bug,优化核心代码,感谢网友“Jayj1997”的建议和反馈。
-
-> v1.0.7 修复定位下的轨迹偏移,受 position 属性的影响的 bug。感谢网友“gexiaoyun” 和 “xingguyue”的反馈。
-
-> v1.0.6 修复多个 canvas 无法同时存在的 bug,修复移动端滚动后影响绘制轨迹的 bug。感谢网友“hytao2017”的反馈。
-
-> v1.0.5 优化部分代码。
-
-> v1.0.4 修复增加局部注册引入方式。
-
-> v1.0.3 修复“在移动端时,如果<sign-canvas>标签距离左侧有间距, 画笔和绘制的内容有偏移 #4”的 bug，感谢网友“xiaohuyahappy ”和“tzy19920902”的 bug 反馈见及修复建议。
-
-> v1.0.2 兼容移动端的可用性
-
-> v1.0.1 修复无法清空的 bug
-
-> v1.0.0 注册发布到 npmjs
 
 ### Customize configuration
 

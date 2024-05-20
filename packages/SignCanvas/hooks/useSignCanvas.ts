@@ -53,7 +53,7 @@ export const useSignCanvas = () => {
             isSign: false, // 签名模式 [Boolean] 默认为非签名模式,有线框, 当设置为true的时候没有任何线框
             imgType: 'png', //下载的图片格式  [String] 可选为 jpeg  canvas本是透明背景的
             quality: 1, //压缩比例  [Number] 可选
-
+            enableResize: true,  //是否启用窗口变化监听 [Boolean] 可选,
             lastWriteTime: 0,
             isWrite: false,
             lastPoint: {
@@ -450,15 +450,20 @@ export const useSignCanvas = () => {
     onMounted(() => {
         init();
         //监听窗口变化
-        window.onresize = () => {
-            if (state.resizeTimer) clearTimeout(state.resizeTimer);
-            state.resizeTimer = setTimeout(() => init(), 100);
+        if (state.config.enableResize) {
+            window.onresize = () => {
+                if (state.resizeTimer) clearTimeout(state.resizeTimer);
+                state.resizeTimer = setTimeout(() => init(), 100);
+            }
         }
+
     });
 
     onBeforeUnmount(() => {
-        window.onresize = null;
-        clearTimeout(state.resizeTimer);
+        if (state.config.enableResize) {
+            window.onresize = null;
+            clearTimeout(state.resizeTimer);
+        }
     });
 
     watch(() => props.options, () => init(), { deep: true });
