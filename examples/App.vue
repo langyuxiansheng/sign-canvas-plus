@@ -87,8 +87,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { IOptions } from '../packages/types';
-// import SignCanvas from '../packages/index';
-// import SignCanvas from '../lib/sign-canvas.umd.js';
+import SignCanvas from '../packages/SignCanvas/SignCanvas.vue';
 const data = ref<any>(null);
 const options = reactive<IOptions>({
   isFullScreen: false, ////是否全屏手写 [Boolean] 可选
@@ -109,21 +108,22 @@ const options = reactive<IOptions>({
   minWriteWidth: 5, // 写字模式最小线宽  [Number] 可选
   writeColor: '#101010', // 轨迹颜色  [String] 可选
   isSign: true, //签名模式 [Boolean] 默认为非签名模式,有线框, 当设置为true的时候没有任何线框
-  imgType: 'png' //下载的图片格式  [String] 可选为 jpeg  canvas本是透明背景的
+  imgType: 'png', //下载的图片格式  [String] 可选为 jpeg  canvas本是透明背景的
+  enableResize: false  //是否启用窗口变化监听 [Boolean] 可选
 })
 const SignCanvasRef = ref()
 /**
  * 清除画板
  */
 const canvasClear = () => {
-  SignCanvasRef.value.canvasClear()
+  SignCanvasRef.value?.canvasClear()
 }
 
 /**
  * 保存图片
  */
 const saveAsImg = () => {
-  const img = SignCanvasRef.value.saveAsImg()
+  const img = SignCanvasRef.value?.saveAsImg()
   alert(`image 的base64：${img}`)
 }
 
@@ -131,14 +131,14 @@ const saveAsImg = () => {
  * 下载图片
  */
 const downloadSignImg = () => {
-  SignCanvasRef.value.downloadSignImg()
+  SignCanvasRef.value?.ownloadSignImg()
 }
 
 /**
  * 下载dealImage图片
  */
 const dealImage = () => {
-  SignCanvasRef.value.dealImage()
+  SignCanvasRef.value?.dealImage()
 }
 </script>
 <style>

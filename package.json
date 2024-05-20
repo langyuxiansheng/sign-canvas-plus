@@ -1,6 +1,6 @@
 {
   "name": "sign-canvas-plus",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "yxs",
   "private": false,
   "description": "一个基于canvas和vue3的手写签名板,支持移动端和PC可以直接下载图片和转成base64编码，支持高倍屏高清绘制,(sign-canvas)的vue3版本,可以在vue3中使用了。",
@@ -37,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:langyuxiansheng/vue-sign-canvas.git"
+    "url": "git@github.com:langyuxiansheng/sign-canvas-plus.git"
   },
   "types": "lib/index.d.ts",
   "files": [
