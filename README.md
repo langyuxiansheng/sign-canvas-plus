@@ -367,7 +367,7 @@ npm run lint
 
 ## 更新日志
 
-> v2.0.1 修复bug,功能属性更新.增加enableResize 属性，可以通过 options.enableResize 来控制窗口变化的时候,是否自动调整画板大小,自动调整大小的时候会清空画板内容, 移动端使用的时候建议设置为false
+> v2.0.3 修复bug,功能属性更新.增加enableResize 属性，可以通过 options.enableResize 来控制窗口变化的时候,是否自动调整画板大小,自动调整大小的时候会清空画板内容, 移动端使用的时候建议设置为false
 
 > v2.0.1 修复bug
 
